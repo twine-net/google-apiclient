@@ -36,7 +36,7 @@ class GoogleServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/config/config.php', 'google');
 
-        $this->app['google.api.client'] = $this->app->share(function () {
+        $this->app->singleton('google.api.client', function () {
             return new Client(config('google'));
         });
     }
